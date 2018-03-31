@@ -1,0 +1,113 @@
+# Serverless framework configuration for Snowplow Serverless Collector
+
+service: snowplow-serverless
+
+provider:
+  name: aws
+  runtime: java8
+  iamRoleStatements:
+    -
+      Action:
+        - 'kinesis:Describe*'
+        - 'kinesis:Get*'
+        - 'kinesis:Put*'
+      Effect: Allow
+      Resource:
+        - Fn::Join:
+          - ''
+          -
+            - 'arn:aws:kinesis:'
+            - Ref: 'AWS::Region'
+            - ':'
+            - Ref: 'AWS::AccountId'
+            - ':'
+            - 'stream/'
+            - Ref: RawEventsStream
+        - Fn::Join:
+          - ''
+          -
+            - 'arn:aws:kinesis:'
+            - Ref: 'AWS::Region'
+            - ':'
+            - Ref: 'AWS::AccountId'
+            - ':'
+            - 'stream/'
+            - Ref: EnrichedEventsStream
+        - Fn::Join:
+          - ''
+          -
+            - 'arn:aws:kinesis:'
+            - Ref: 'AWS::Region'
+            - ':'
+            - Ref: 'AWS::AccountId'
+            - ':'
+            - 'stream/'
+            - Ref: BadEventsStream
+
+package:
+  artifact: target/scala-2.11/serverless-collector.jar
+
+functions:
+  options:
+    handler: io.github.acgray.snowplow.serverless.collector.OptionsHandler
+    events:
+      - http:
+          path: /{proxy+}
+          method: options
+          headers:
+            - Access-Control-Allow-Origin
+            - Access-Control-Allow-Credentials
+            - Access-Control-Allow-Headers
+  collector:
+    handler: io.github.acgray.snowplow.serverless.collector.CollectorHandler
+    environment:
+      KINESIS_STREAM_NAME:
+        Ref: RawEventsStream
+    events:
+      - http:
+          path: /{proxy+}
+          method: get
+          headers:
+            - Access-Control-Allow-Origin
+            - Access-Control-Allow-Credentials
+      - http:
+          path: /{proxy+}
+          method: post
+          headers:
+            - Access-Control-Allow-Origin
+            - Access-Control-Allow-Credentials
+  enrich:
+    handler: io.github.acgray.snowplow.serverless.enrich.Handler
+    environment:
+      KINESIS_GOOD_STREAM_NAME:
+        Ref: EnrichedEventsStream
+      KINESIS_BAD_STREAM_NAME:
+        Ref: BadEventsStream
+    events:
+      - stream:
+          type: kinesis
+          arn:
+            Fn::GetAtt:
+              - RawEventsStream
+              - Arn
+          batchSize: 1
+          startingPosition: TRIM_HORIZON
+          enabled: true
+
+resources:
+  Resources:
+    RawEventsStream:
+      Type: AWS::Kinesis::Stream
+      Properties:
+        ShardCount: 1
+        RetentionPeriodHours: 24
+    EnrichedEventsStream:
+      Type: AWS::Kinesis::Stream
+      Properties:
+        ShardCount: 1
+        RetentionPeriodHours: 24
+    BadEventsStream:
+      Type: AWS::Kinesis::Stream
+      Properties:
+        ShardCount: 1
+        RetentionPeriodHours: 24
