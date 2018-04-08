@@ -1,5 +1,7 @@
 # Snowplow serverless
 
+[![Build Status](https://travis-ci.org/acgray/snowplow-serverless.svg?branch=master)](https://travis-ci.org/acgray/snowplow-serverless)
+
 Experimental Serverless version of the [Snowplow](https://www.snowplowanalytics.com)
 stack, powered by AWS Lambda, Kinesis and API Gateway.
 
