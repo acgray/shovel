@@ -92,7 +92,7 @@ class Handler extends RequestHandler[KinesisEvent, String] {
     val goodEventsRecords = flattened.collect { case Success(e) => e }
       .map(e => {
         val entry = new PutRecordsRequestEntry()
-        entry.setPartitionKey(e.event_id)
+        entry.setPartitionKey("111")
         entry.setData(ByteBuffer.wrap(tabSeparatedEnrichedEvent(e).getBytes(StandardCharsets.UTF_8)))
         entry
       })

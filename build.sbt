@@ -22,8 +22,15 @@ libraryDependencies ++= Seq(
   "com.amazonaws" % "aws-lambda-java-events" % "1.3.0",
   "com.amazonaws" % "aws-lambda-java-core" % "1.1.0",
   "com.amazonaws" % "aws-java-sdk-kinesis" % "1.11.301",
-  "com.snowplowanalytics" %% "snowplow-common-enrich"    % "0.31.0"
+  "com.snowplowanalytics" %% "snowplow-common-enrich"    % "0.31.0",
+  "org.scalaz"    % "scalaz-core"    % "7.0.9"
 )
+
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test
+libraryDependencies += "org.scalamock" %% "scalamock" % "4.1.0" % Test
+libraryDependencies += "org.typelevel" %% "scalaz-scalatest" % "1.1.2" % Test
+libraryDependencies += "com.github.mirreck" % "java-fake-factory" % "1.0.2" % Test
+
 
 scalacOptions ++= Seq(
   "-unchecked",
