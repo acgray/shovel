@@ -23,7 +23,7 @@ libraryDependencies ++= Seq(
   "com.amazonaws" % "aws-lambda-java-core" % "1.1.0",
   "com.amazonaws" % "aws-java-sdk-kinesis" % "1.11.301",
   "com.snowplowanalytics" %% "snowplow-common-enrich"    % "0.31.0",
-  "org.scalaz"    % "scalaz-core"    % "7.0.9"
+  "org.scalaz"    %% "scalaz-core"    % "7.0.9"
 )
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % Test
