@@ -1,4 +1,4 @@
-package io.github.acgray.shovel.collector
+package io.github.acgray.shovel.lambda
 
 import scala.beans.BeanProperty
 

@@ -1,6 +1,6 @@
-package io.github.acgray.snowplow.serverless.collector
+package io.github.acgray.shovel.collector
 
-import io.github.acgray.snowplow.serverless.UnitSpec
+import io.github.acgray.shovel.UnitSpec
 
 class UtilsSpec extends UnitSpec {
   "encodeQueryString" should "handle empty map" in {

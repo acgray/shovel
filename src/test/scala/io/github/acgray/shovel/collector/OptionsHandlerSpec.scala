@@ -1,9 +1,9 @@
-package io.github.acgray.snowplow.serverless.collector
+package io.github.acgray.shovel.collector
 
 import com.amazonaws.services.lambda.runtime.Context
 import com.github.mirreck.FakeFactory
-import io.github.acgray.snowplow.serverless.UnitSpec
-import io.github.acgray.snowplow.serverless.lambda.LambdaProxyRequest
+import io.github.acgray.shovel.UnitSpec
+import io.github.acgray.shovel.lambda.LambdaProxyRequest
 import org.scalamock.scalatest.MockFactory
 
 import scala.collection.JavaConversions._

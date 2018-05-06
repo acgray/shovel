@@ -1,4 +1,4 @@
-package io.github.acgray.snowplow.serverless.collector
+package io.github.acgray.shovel.collector
 
 import org.apache.http.client.utils.URLEncodedUtils
 import org.apache.http.message.BasicNameValuePair

@@ -1,9 +1,9 @@
-package io.github.acgray.snowplow.serverless.collector
+package io.github.acgray.shovel.collector
 
 import com.github.mirreck.FakeFactory
 import com.snowplowanalytics.snowplow.CollectorPayload.thrift.model1.CollectorPayload
-import io.github.acgray.snowplow.serverless.UnitSpec
-import io.github.acgray.snowplow.serverless.lambda.LambdaProxyRequest
+import io.github.acgray.shovel.UnitSpec
+import io.github.acgray.shovel.lambda.LambdaProxyRequest
 import org.apache.thrift.{TDeserializer, TSerializer}
 import scalaz.{BuildInfo, Failure, Success}
 

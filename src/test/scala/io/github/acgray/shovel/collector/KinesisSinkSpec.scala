@@ -1,11 +1,11 @@
-package io.github.acgray.snowplow.serverless.collector
+package io.github.acgray.shovel.collector
 
 import java.nio.ByteBuffer
 
 import com.amazonaws.{AmazonClientException, AmazonServiceException}
 import com.amazonaws.services.kinesis.AmazonKinesis
 import com.amazonaws.services.kinesis.model.PutRecordResult
-import io.github.acgray.snowplow.serverless.UnitSpec
+import io.github.acgray.shovel.UnitSpec
 import org.scalatest.Matchers
 import org.typelevel.scalatest.ValidationMatchers
 import scalaz.{Failure, Success}

@@ -1,17 +1,13 @@
-package io.github.acgray.snowplow.serverless.collector
+package io.github.acgray.shovel.collector
 
 import com.amazonaws.services.lambda.runtime.Context
 import com.github.mirreck.FakeFactory
-import com.snowplowanalytics.snowplow.CollectorPayload.thrift.model1.CollectorPayload
-import io.github.acgray.snowplow.serverless.UnitSpec
-import io.github.acgray.snowplow.serverless.lambda.LambdaProxyRequest
-import org.apache.thrift.{TDeserializer, TSerializer}
+import io.github.acgray.shovel.UnitSpec
+import io.github.acgray.shovel.lambda.LambdaProxyRequest
 import org.scalamock.scalatest.MockFactory
-import org.scalatest.PrivateMethodTester
-import scalaz.{BuildInfo, Failure, Success}
+import scalaz.{Failure, Success}
 
 import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
 
 class CollectorHandlerSpec extends UnitSpec with MockFactory {
 
@@ -93,5 +89,15 @@ class CollectorHandlerSpec extends UnitSpec with MockFactory {
 
     assert(thrownException.isInstanceOf[RuntimeException])
     assert(thrownException.getCause == wantException)
+  }
+
+  it should "throw an exception when KINESIS_STREAM_NAME environment" +
+    "variable is missing" in {
+    val thrown = intercept[Exception] {
+      val invalidHandler = new CollectorHandler
+    }
+
+    assert(thrown.isInstanceOf[RuntimeException])
+    assert(thrown.getMessage == "KINESIS_STREAM_NAME is required")
   }
 }

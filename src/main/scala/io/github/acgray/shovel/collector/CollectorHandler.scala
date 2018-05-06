@@ -1,8 +1,9 @@
 package io.github.acgray.shovel.collector
 
+import com.amazonaws.regions.Regions
 import com.amazonaws.services.kinesis.AmazonKinesisClient
 import com.amazonaws.services.lambda.runtime.{Context, RequestHandler}
-import io.github.acgray.shovel.collector.{LambdaProxyRequest, LambdaProxyResponse}
+import io.github.acgray.shovel.lambda.{LambdaProxyRequest, LambdaProxyResponse}
 import scalaz.{Failure, Success}
 
 import scala.collection.JavaConversions._
@@ -26,7 +27,7 @@ class OptionsHandler extends RequestHandler[LambdaProxyRequest, LambdaProxyRespo
   }
 }
 
-class CollectorHandler(private val streamNameOverride: Option[String],
+class CollectorHandler(private val streamNameOverride: Option[String] = None,
                        private val sinkOverride: Option[Sink] = None,
                        private val serializer: Serializer = new ThriftSerializer)
   extends RequestHandler[LambdaProxyRequest, LambdaProxyResponse] {
@@ -40,7 +41,7 @@ class CollectorHandler(private val streamNameOverride: Option[String],
     case _ => Regions.EU_WEST_1
   }
 
-  private final val pixel = "R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+  private val pixel = "R0lGODlhAQABAPAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="  // pragma: nocover
 
   private val kinesis = AmazonKinesisClient.builder
     .withRegion(kinesisRegion)

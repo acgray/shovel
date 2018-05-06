@@ -1,14 +1,11 @@
-package io.github.acgray.snowplow.serverless.collector
+package io.github.acgray.shovel.collector
 
 import com.snowplowanalytics.snowplow.CollectorPayload.thrift.model1.CollectorPayload
-import io.github.acgray.snowplow.serverless.lambda.LambdaProxyRequest
-import org.apache.http.client.utils.URLEncodedUtils
-import org.apache.http.message.BasicNameValuePair
+import io.github.acgray.shovel.lambda.LambdaProxyRequest
 import org.apache.thrift.TSerializer
 import scalaz.{BuildInfo, Failure, Success, Validation}
 
 import scala.collection.JavaConversions._
-import scala.collection.JavaConverters._
 
 class ThriftSerializer(private val ser: TSerializer = new TSerializer)
   extends Serializer {

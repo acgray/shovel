@@ -1,6 +1,6 @@
-package io.github.acgray.snowplow.serverless.collector
+package io.github.acgray.shovel.collector
 
-import io.github.acgray.snowplow.serverless.lambda.LambdaProxyRequest
+import io.github.acgray.shovel.lambda.LambdaProxyRequest
 import scalaz.Validation
 
 trait Serializer {

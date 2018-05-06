@@ -1,4 +1,4 @@
-package io.github.acgray.snowplow.serverless
+package io.github.acgray.shovel
 
 import org.scalamock.scalatest.MockFactory
 import org.scalatest._
