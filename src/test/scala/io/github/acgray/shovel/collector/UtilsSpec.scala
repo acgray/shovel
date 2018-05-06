@@ -25,4 +25,8 @@ class UtilsSpec extends UnitSpec {
 
     assert(qs == "a=the+quick+brown+%D8%B9%D8%B1%D8%A8%D9%89+fox&b=jumped+over+the+lazy+%D8%B9%D8%B1%D8%A8%D9%89+dog")
   }
+
+  it should "return an empty list with no input" in {
+    assert(Utils.mapToQueryString(Map()) == "")
+  }
 }
