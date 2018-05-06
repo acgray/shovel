@@ -3,6 +3,7 @@
 ![Shovel](https://cdn.pbrd.co/images/HjY2A1V.png)
 
 [![Build Status](https://travis-ci.org/acgray/shovel.svg?branch=master)](https://travis-ci.org/acgray/shovel)
+[![Coverage Status](https://coveralls.io/repos/github/acgray/shovel/badge.svg?branch=master)](https://coveralls.io/github/acgray/shovel?branch=master)
 
 Like a little [Snowplow](https://www.snowplowanalytics.com) without the mechanics :)
 
