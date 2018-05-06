@@ -1,6 +1,4 @@
-# Serverless framework configuration for Snowplow Serverless Collector
-
-service: snowplow-serverless
+service: shovel
 
 provider:
   name: aws
@@ -49,7 +47,7 @@ package:
 
 functions:
   options:
-    handler: io.github.acgray.snowplow.serverless.collector.OptionsHandler
+    handler: io.github.acgray.shovel.collector.OptionsHandler
     events:
       - http:
           path: /{proxy+}
@@ -59,7 +57,7 @@ functions:
             - Access-Control-Allow-Credentials
             - Access-Control-Allow-Headers
   collector:
-    handler: io.github.acgray.snowplow.serverless.collector.CollectorHandler
+    handler: io.github.acgray.shovel.collector.CollectorHandler
     environment:
       KINESIS_STREAM_NAME:
         Ref: RawEventsStream
@@ -77,7 +75,7 @@ functions:
             - Access-Control-Allow-Origin
             - Access-Control-Allow-Credentials
   enrich:
-    handler: io.github.acgray.snowplow.serverless.enrich.Handler
+    handler: io.github.acgray.shovel.enrich.Handler
     environment:
       KINESIS_GOOD_STREAM_NAME:
         Ref: EnrichedEventsStream

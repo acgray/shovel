@@ -2,7 +2,7 @@ import sbt.Keys._
 import sbt._
 import sbtrelease.Version
 
-name := "snowplow-serverless"
+name := "shovel"
 
 resolvers ++= Seq(
   Resolver.sonatypeRepo("public"),

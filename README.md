@@ -1,8 +1,12 @@
-# Snowplow serverless
+# Shovel
 
-[![Build Status](https://travis-ci.org/acgray/snowplow-serverless.svg?branch=master)](https://travis-ci.org/acgray/snowplow-serverless)
+![Shovel](https://cdn.pbrd.co/images/HjY2A1V.png)
 
-Experimental Serverless version of the [Snowplow](https://www.snowplowanalytics.com)
+[![Build Status](https://travis-ci.org/acgray/shovel.svg?branch=master)](https://travis-ci.org/acgray/shovel)
+
+Like a little [Snowplow](https://www.snowplowanalytics.com) without the mechanics :)
+
+Experimental Serverless port of the [Snowplow](https://www.snowplowanalytics.com)
 stack, powered by AWS Lambda, Kinesis and API Gateway.
 
 **THIS IS EXPERIMENTAL SOFTWARE AND ALMOST CERTAINLY NOT USABLE IN PRODUCTION.
@@ -16,7 +20,7 @@ with Snowplow Analytics Ltd or the official Snowplow project.*
 Clone the repository:
 
 ```
-git clone git@github.com:acgray/snowplow-serverless.git
+git clone git@github.com:acgray/shovel.git
 ```
 
 Deploy the application:

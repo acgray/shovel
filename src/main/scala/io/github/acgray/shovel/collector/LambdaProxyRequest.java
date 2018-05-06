@@ -1,4 +1,4 @@
-package io.github.acgray.snowplow.serverless.collector;
+package io.github.acgray.shovel.collector;
 
 import java.util.Map;
 

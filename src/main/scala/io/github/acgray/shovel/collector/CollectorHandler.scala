@@ -1,7 +1,6 @@
-package io.github.acgray.snowplow.serverless.collector
+package io.github.acgray.shovel.collector
 
 import java.nio.ByteBuffer
-import java.util.Base64
 
 import com.amazonaws.services.kinesis.AmazonKinesisClient
 import com.amazonaws.services.lambda.runtime.{Context, RequestHandler}

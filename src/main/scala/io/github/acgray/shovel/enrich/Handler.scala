@@ -1,4 +1,4 @@
-package io.github.acgray.snowplow.serverless.enrich
+package io.github.acgray.shovel.enrich
 
 import java.nio.ByteBuffer
 import java.nio.charset.StandardCharsets
